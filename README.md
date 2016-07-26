@@ -1,1 +1,2 @@
-# semaforo-javascript-basico
+# basic-javascript-trafficlight
+Basic Javascript Traffic Light
