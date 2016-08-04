@@ -1,61 +1,333 @@
-/*
+var turno=1;
 
-state = 0: red
-state = 1: yellow
-state = 2: green
-
-*/
-
-// Modelo / estado
-var state = 0;
-
-var viewport = document.getElementById("viewport");
-var changeTrigger = document.getElementById("change");
-
-changeTrigger.addEventListener("click", function(){
-  if(state === 0){
-    state = 2;
+var canvas=document.getElementById("totito");
+var bt=document.getElementById("btn");
+var win=document.getElementById("ganador");
+var squares= document.getElementsByClassName("square");
+var board=["","","","","","","","",""];
+var mark="";
+var cl;
+function rev(element){
+  
+  if (squares[element].innerHTML=== "") {
+      if (turno===3) {
+        return 1;
+      }
+      if (turno===1) {
+        mark="X";
+        turno=2;
+      }else if (turno===2) {
+        mark="O";
+        turno=1;
+      }
+      
+    squares[element].innerHTML=mark;
+    board[element]=mark;
+    render();
   }
-  else if(state === 1){
-    state = 0;
-  }
-  else{
-    state = 1;
-  }
-
-  viewport.innerHTML = render(state);
-});
-
-
-function render(state){
-  var html = "";
-
-  html += '<div class="traffic-light">';
-
-  if(state === 0){
-    html += '<div class="red light"></div>';
-  }
-  else{
-    html += '<div class="red light off"></div>';
-  }
-
-  if(state === 1){
-    html += '<div class="yellow light"></div>';
-  }
-  else{
-    html += '<div class="yellow light off"></div>';
-  }
-
-  if(state === 2){
-    html += '<div class="green light"></div>';
-  }
-  else{
-    html += '<div class="green light off"></div>';
-  }
-
-  html += '</div>';
-
-  return html;
+  
 }
 
-viewport.innerHTML = render(state);
+
+
+bt.addEventListener("click",init);
+
+
+function render(){
+
+
+  if (board[0] !== "") {
+    //revisar 1ra fila, diagonal, 1ra columna
+    if (board[1]===board[0]) {
+      if (board[2]===board[0]) {
+        paint(0,1,2);
+        return true;
+      }
+    }
+    if (board[4]===board[0]) {
+      if (board[8]===board[0]) {
+        paint(0,4,8);
+        return true;
+      }
+    }
+    if (board[3]===board[0]) {
+      if (board[6]===board[0]) {
+        paint(0,3,6);
+        return true;
+      }
+    }
+
+  }
+//revisar 2da columna
+  if (board[1] !== "") {
+    if (board[4]===board[1]) {
+      if (board[7]===board[1]) {
+        paint(1,4,7);
+        return true;
+      }
+    }
+
+  }
+//revisar diagonal invertida y 3ra columna
+  if (board[2] !== "") {
+    if (board[4]===board[2]) {
+      if (board[6]===board[2]) {
+        paint(2,4,6);
+        return true;
+      }
+    }
+    if (board[5]===board[2]) {
+      if (board[8]===board[2]) {
+        paint(2,5,8);
+        return true;
+      }
+    }
+    
+  }
+//revisar 2da fila
+  if (board[3] !== "") {
+    if (board[4]===board[3]) {
+      if (board[5]===board[3]) {
+        paint(3,4,5);
+        return true;
+      }
+    }
+  }
+//revisar 3ra fila
+  if (board[6] !== "") {
+    if (board[7]===board[6]) {
+      if (board[8]===board[6]) {
+        paint(6,7,8);
+        return true;
+      }
+    }
+  }
+//revisar si hay empate
+  for (var i = squares.length - 1; i >= 0; i--) {
+    if (board[i]==="") {
+      break;
+    }
+  }
+  if (i === -1) {
+    win.innerHTML=("Hay un empate");
+    turno=3;
+    bt.style.visibility="visible";
+    win.style.visibility="visible";
+  }
+}
+
+function paint(e1,e2,e3){
+  squares[e1].style.color="green";
+  squares[e2].style.color="green";
+  squares[e3].style.color="green";
+  
+  win.innerHTML=("¡Gana el jugador de las "+mark+"'s !");
+  turno=3;
+  bt.style.visibility="visible";
+  win.style.visibility="visible";
+}
+
+function init(){
+  turno=1;
+  var html="<div class='square s1'></div>";
+  html+="<div class='square s2'></div>";
+  html+="<div class='square s3'></div>";
+  html+="<div class='square s4'></div>";
+  html+="<div class='square s5'></div>";
+  html+="<div class='square s6'></div>";
+  html+="<div class='square s7'></div>";
+  html+="<div class='square s8'></div>";
+  html+="<div class='square s9'></div>";
+  canvas.innerHTML=html;
+
+  squares= document.getElementsByClassName("square");
+
+
+  squares[0].addEventListener("click",function(){ rev(0);} );
+  squares[1].addEventListener("click",function(){ rev(1);} );
+  squares[2].addEventListener("click",function(){ rev(2);} );
+  squares[3].addEventListener("click",function(){ rev(3);} );
+  squares[4].addEventListener("click",function(){ rev(4);} );
+  squares[5].addEventListener("click",function(){ rev(5);} );
+  squares[6].addEventListener("click",function(){ rev(6);} );
+  squares[7].addEventListener("click",function(){ rev(7);} );
+  squares[8].addEventListener("click",function(){ rev(8);} );
+
+
+  for (var i = squares.length - 1; i >= 0; i--) {
+    board[i]="";
+    squares[i].innerHTML="";
+    squares[i].removeAttribute("style");
+  }
+  
+  bt.style.visibility="hidden";
+  win.style.visibility="hidden";
+}
+init();var turno=1;
+
+var canvas=document.getElementById("totito");
+var bt=document.getElementById("btn");
+var win=document.getElementById("ganador");
+var squares= document.getElementsByClassName("square");
+var board=["","","","","","","","",""];
+var mark="";
+var cl;
+function rev(element){
+  
+  if (squares[element].innerHTML=== "") {
+      if (turno===3) {
+        return 1;
+      }
+      if (turno===1) {
+        mark="X";
+        turno=2;
+      }else if (turno===2) {
+        mark="O";
+        turno=1;
+      }
+      
+    squares[element].innerHTML=mark;
+    board[element]=mark;
+    render();
+  }
+  
+}
+
+
+
+bt.addEventListener("click",init);
+
+
+function render(){
+
+
+  if (board[0] !== "") {
+    //revisar 1ra fila, diagonal, 1ra columna
+    if (board[1]===board[0]) {
+      if (board[2]===board[0]) {
+        paint(0,1,2);
+        return true;
+      }
+    }
+    if (board[4]===board[0]) {
+      if (board[8]===board[0]) {
+        paint(0,4,8);
+        return true;
+      }
+    }
+    if (board[3]===board[0]) {
+      if (board[6]===board[0]) {
+        paint(0,3,6);
+        return true;
+      }
+    }
+
+  }
+//revisar 2da columna
+  if (board[1] !== "") {
+    if (board[4]===board[1]) {
+      if (board[7]===board[1]) {
+        paint(1,4,7);
+        return true;
+      }
+    }
+
+  }
+//revisar diagonal invertida y 3ra columna
+  if (board[2] !== "") {
+    if (board[4]===board[2]) {
+      if (board[6]===board[2]) {
+        paint(2,4,6);
+        return true;
+      }
+    }
+    if (board[5]===board[2]) {
+      if (board[8]===board[2]) {
+        paint(2,5,8);
+        return true;
+      }
+    }
+    
+  }
+//revisar 2da fila
+  if (board[3] !== "") {
+    if (board[4]===board[3]) {
+      if (board[5]===board[3]) {
+        paint(3,4,5);
+        return true;
+      }
+    }
+  }
+//revisar 3ra fila
+  if (board[6] !== "") {
+    if (board[7]===board[6]) {
+      if (board[8]===board[6]) {
+        paint(6,7,8);
+        return true;
+      }
+    }
+  }
+//revisar si hay empate
+  for (var i = squares.length - 1; i >= 0; i--) {
+    if (board[i]==="") {
+      break;
+    }
+  }
+  if (i === -1) {
+    win.innerHTML=("Hay un empate");
+    turno=3;
+    bt.style.visibility="visible";
+    win.style.visibility="visible";
+  }
+}
+
+function paint(e1,e2,e3){
+  squares[e1].style.color="green";
+  squares[e2].style.color="green";
+  squares[e3].style.color="green";
+  
+  win.innerHTML=("¡Gana el jugador de las "+mark+"'s !");
+  turno=3;
+  bt.style.visibility="visible";
+  win.style.visibility="visible";
+
+
+}
+
+function init(){
+  turno=1;
+  var html="<div class='square s1'></div>";
+  html+="<div class='square s2'></div>";
+  html+="<div class='square s3'></div>";
+  html+="<div class='square s4'></div>";
+  html+="<div class='square s5'></div>";
+  html+="<div class='square s6'></div>";
+  html+="<div class='square s7'></div>";
+  html+="<div class='square s8'></div>";
+  html+="<div class='square s9'></div>";
+  canvas.innerHTML=html;
+
+  squares= document.getElementsByClassName("square");
+
+
+  squares[0].addEventListener("click",function(){ rev(0);} );
+  squares[1].addEventListener("click",function(){ rev(1);} );
+  squares[2].addEventListener("click",function(){ rev(2);} );
+  squares[3].addEventListener("click",function(){ rev(3);} );
+  squares[4].addEventListener("click",function(){ rev(4);} );
+  squares[5].addEventListener("click",function(){ rev(5);} );
+  squares[6].addEventListener("click",function(){ rev(6);} );
+  squares[7].addEventListener("click",function(){ rev(7);} );
+  squares[8].addEventListener("click",function(){ rev(8);} );
+
+
+  for (var i = squares.length - 1; i >= 0; i--) {
+    board[i]="";
+    squares[i].innerHTML="";
+    squares[i].removeAttribute("style");
+  }
+  
+  bt.style.visibility="hidden";
+  win.style.visibility="hidden";
+}
+init();

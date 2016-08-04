@@ -1,36 +1,118 @@
-$traffic-light-width: 200px;
-$light-size: $traffic-light-width*0.75;
-.traffic-light{
-  background: black;
-  margin-bottom: 10px;
-  padding: $traffic-light-width*0.1;
-  width: $traffic-light-width;
+$board-size:600px;
+$square-color:#c9cba3;
+$background-color:#b1b695;
+$mark-color:#505168;//#723d46;
 
-  .light{
-    background: white;
-    border-radius: 100%;
-    height: $light-size;
-    margin: 0 auto 10px auto;
-    width: $light-size;
+#totito{
+  //background:$background-color;
+  height: $board-size;
+  margin:5% 0 0 30%;
+  width: $board-size;
 
-    &.green{
-      background: #0f0;
-    }
+}
 
-    &.red{
-      background: red;
-    }
+.square{
+  text-align: center;
+  color:red;
+  box-sizing:border-box;
+  color: $mark-color;
+  float: left;
+  font-size:$board-size * 0.2 *0.8;
+  height: $board-size * 0.3;
+  line-height: $board-size * 0.3;
+  width: $board-size *0.3;
+}
 
-    &.yellow{
-      background: yellow;
-    }
+.s1
+{
+  border-right: solid;
+  border-bottom: solid;
+  width: 33.33%;
+  height: 33.33%;
+  box-sizing: border-box;
+  float: left;
+}
+.s2
+{
+  border-left: solid;
+  border-bottom: solid;
+  border-right: solid;
+  width: 33.33%;
+  height: 33.33%;
+  box-sizing: border-box;
+  float: left;
+}
+.s3
+{
+  border-left: solid;
+  border-bottom: solid;
+  width: 33.33%;
+  height: 33.33%;
+  box-sizing: border-box;
+  float: left;
+}
+.s4
+{
+  border-top: solid;
+  border-right: solid;
+  border-bottom: solid;
+  width: 33.33%;
+  height: 33.33%;
+  box-sizing: border-box;
+  float: left;
+}
+.s5
+{
+  border-style: solid;
+  width: 33.33%;
+  height: 33.33%;
+  box-sizing: border-box;
+  float: left;
+}
+.s6
+{
+  border-top: solid;
+  border-left: solid;
+  border-bottom: solid;
+  width: 33.33%;
+  height: 33.33%;
+  box-sizing: border-box;
+  float: left;
+}
+.s7
+{
+  border-top: solid;
+  border-right: solid;
+  width: 33.33%;
+  height: 33.33%;
+  box-sizing: border-box;
+  float: left;
+}
+.s8
+{
+  border-top: solid;
+  border-right: solid;
+  border-left: solid;
+  width: 33.33%;
+  height: 33.33%;
+  box-sizing: border-box;
+  float: left;
+}
+.s9
+{
+  border-left: solid;
+  border-top: solid;
+  width: 33.33%;
+  height: 33.33%;
+  box-sizing: border-box;
+  float: left;
+}
 
-    &.off{
-      opacity: 0.3;
-    }
-
-    &:last-child{
-      margin-bottom: 0;
-    }
-  }
+#btn{
+  visibility:hidden;
+  margin:0 0 3% 30%;
+}
+#ganador{
+  font-size:$board-size * 0.13 ;
+  margin-left:30%;
 }

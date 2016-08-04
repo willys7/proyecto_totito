@@ -1,21 +1,98 @@
-.traffic-light {
-  background: black;
-  margin-bottom: 10px;
-  padding: 20px;
-  width: 200px; }
-  .traffic-light .light {
-    background: white;
-    border-radius: 100%;
-    height: 150px;
-    margin: 0 auto 10px auto;
-    width: 150px; }
-    .traffic-light .light.green {
-      background: #0f0; }
-    .traffic-light .light.red {
-      background: red; }
-    .traffic-light .light.yellow {
-      background: yellow; }
-    .traffic-light .light.off {
-      opacity: 0.3; }
-    .traffic-light .light:last-child {
-      margin-bottom: 0; }
+#totito {
+  height: 600px;
+  margin: 5% 0 0 30%;
+  width: 600px; }
+
+.square {
+  text-align: center;
+  color: red;
+  box-sizing: border-box;
+  color: #505168;
+  float: left;
+  font-size: 96px;
+  height: 180px;
+  line-height: 180px;
+  width: 180px; }
+
+.s1 {
+  border-right: solid;
+  border-bottom: solid;
+  width: 33.33%;
+  height: 33.33%;
+  box-sizing: border-box;
+  float: left; }
+
+.s2 {
+  border-left: solid;
+  border-bottom: solid;
+  border-right: solid;
+  width: 33.33%;
+  height: 33.33%;
+  box-sizing: border-box;
+  float: left; }
+
+.s3 {
+  border-left: solid;
+  border-bottom: solid;
+  width: 33.33%;
+  height: 33.33%;
+  box-sizing: border-box;
+  float: left; }
+
+.s4 {
+  border-top: solid;
+  border-right: solid;
+  border-bottom: solid;
+  width: 33.33%;
+  height: 33.33%;
+  box-sizing: border-box;
+  float: left; }
+
+.s5 {
+  border-style: solid;
+  width: 33.33%;
+  height: 33.33%;
+  box-sizing: border-box;
+  float: left; }
+
+.s6 {
+  border-top: solid;
+  border-left: solid;
+  border-bottom: solid;
+  width: 33.33%;
+  height: 33.33%;
+  box-sizing: border-box;
+  float: left; }
+
+.s7 {
+  border-top: solid;
+  border-right: solid;
+  width: 33.33%;
+  height: 33.33%;
+  box-sizing: border-box;
+  float: left; }
+
+.s8 {
+  border-top: solid;
+  border-right: solid;
+  border-left: solid;
+  width: 33.33%;
+  height: 33.33%;
+  box-sizing: border-box;
+  float: left; }
+
+.s9 {
+  border-left: solid;
+  border-top: solid;
+  width: 33.33%;
+  height: 33.33%;
+  box-sizing: border-box;
+  float: left; }
+
+#btn {
+  visibility: hidden;
+  margin: 0 0 3% 30%; }
+
+#ganador {
+  font-size: 78px;
+  margin-left: 30%; }
