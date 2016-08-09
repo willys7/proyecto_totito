@@ -3,13 +3,13 @@ var turno=1;
 var canvas=document.getElementById("totito");
 var bt=document.getElementById("btn");
 var win=document.getElementById("ganador");
-var squares= document.getElementsByClassName("square");
+var cuadrados= document.getElementsByClassName("cuadrado");
 var board=["","","","","","","","",""];
 var mark="";
 var cl;
 function rev(element){
   
-  if (squares[element].innerHTML=== "") {
+  if (cuadrados[element].innerHTML=== "") {
       if (turno===3) {
         return 1;
       }
@@ -21,7 +21,7 @@ function rev(element){
         turno=1;
       }
       
-    squares[element].innerHTML=mark;
+    cuadrados[element].innerHTML=mark;
     board[element]=mark;
     render();
   }
@@ -103,7 +103,7 @@ function render(){
     }
   }
 //revisar si hay empate
-  for (var i = squares.length - 1; i >= 0; i--) {
+  for (var i = cuadrados.length - 1; i >= 0; i--) {
     if (board[i]==="") {
       break;
     }
@@ -117,9 +117,9 @@ function render(){
 }
 
 function paint(e1,e2,e3){
-  squares[e1].style.color="green";
-  squares[e2].style.color="green";
-  squares[e3].style.color="green";
+  cuadrados[e1].style.color="green";
+  cuadrados[e2].style.color="green";
+  cuadrados[e3].style.color="green";
   
   win.innerHTML=("¡Gana el jugador de las "+mark+"'s !");
   turno=3;
@@ -129,35 +129,35 @@ function paint(e1,e2,e3){
 
 function init(){
   turno=1;
-  var html="<div class='square s1'></div>";
-  html+="<div class='square s2'></div>";
-  html+="<div class='square s3'></div>";
-  html+="<div class='square s4'></div>";
-  html+="<div class='square s5'></div>";
-  html+="<div class='square s6'></div>";
-  html+="<div class='square s7'></div>";
-  html+="<div class='square s8'></div>";
-  html+="<div class='square s9'></div>";
+  var html="<div class='cuadrado s1'></div>";
+  html+="<div class='cuadrado s2'></div>";
+  html+="<div class='cuadrado s3'></div>";
+  html+="<div class='cuadrado s4'></div>";
+  html+="<div class='cuadrado s5'></div>";
+  html+="<div class='cuadrado s6'></div>";
+  html+="<div class='cuadrado s7'></div>";
+  html+="<div class='cuadrado s8'></div>";
+  html+="<div class='cuadrado s9'></div>";
   canvas.innerHTML=html;
 
-  squares= document.getElementsByClassName("square");
+  cuadrados= document.getElementsByClassName("cuadrado");
 
 
-  squares[0].addEventListener("click",function(){ rev(0);} );
-  squares[1].addEventListener("click",function(){ rev(1);} );
-  squares[2].addEventListener("click",function(){ rev(2);} );
-  squares[3].addEventListener("click",function(){ rev(3);} );
-  squares[4].addEventListener("click",function(){ rev(4);} );
-  squares[5].addEventListener("click",function(){ rev(5);} );
-  squares[6].addEventListener("click",function(){ rev(6);} );
-  squares[7].addEventListener("click",function(){ rev(7);} );
-  squares[8].addEventListener("click",function(){ rev(8);} );
+  cuadrados[0].addEventListener("click",function(){ rev(0);} );
+  cuadrados[1].addEventListener("click",function(){ rev(1);} );
+  cuadrados[2].addEventListener("click",function(){ rev(2);} );
+  cuadrados[3].addEventListener("click",function(){ rev(3);} );
+  cuadrados[4].addEventListener("click",function(){ rev(4);} );
+  cuadrados[5].addEventListener("click",function(){ rev(5);} );
+  cuadrados[6].addEventListener("click",function(){ rev(6);} );
+  cuadrados[7].addEventListener("click",function(){ rev(7);} );
+  cuadrados[8].addEventListener("click",function(){ rev(8);} );
 
 
-  for (var i = squares.length - 1; i >= 0; i--) {
+  for (var i = cuadrados.length - 1; i >= 0; i--) {
     board[i]="";
-    squares[i].innerHTML="";
-    squares[i].removeAttribute("style");
+    cuadrados[i].innerHTML="";
+    cuadrados[i].removeAttribute("style");
   }
   
   bt.style.visibility="hidden";
@@ -168,13 +168,13 @@ init();var turno=1;
 var canvas=document.getElementById("totito");
 var bt=document.getElementById("btn");
 var win=document.getElementById("ganador");
-var squares= document.getElementsByClassName("square");
+var cuadrados= document.getElementsByClassName("cuadrado");
 var board=["","","","","","","","",""];
 var mark="";
 var cl;
 function rev(element){
   
-  if (squares[element].innerHTML=== "") {
+  if (cuadrados[element].innerHTML=== "") {
       if (turno===3) {
         return 1;
       }
@@ -186,7 +186,7 @@ function rev(element){
         turno=1;
       }
       
-    squares[element].innerHTML=mark;
+    cuadrados[element].innerHTML=mark;
     board[element]=mark;
     render();
   }
@@ -268,7 +268,7 @@ function render(){
     }
   }
 //revisar si hay empate
-  for (var i = squares.length - 1; i >= 0; i--) {
+  for (var i = cuadrados.length - 1; i >= 0; i--) {
     if (board[i]==="") {
       break;
     }
@@ -282,9 +282,9 @@ function render(){
 }
 
 function paint(e1,e2,e3){
-  squares[e1].style.color="green";
-  squares[e2].style.color="green";
-  squares[e3].style.color="green";
+  cuadrados[e1].style.color="green";
+  cuadrados[e2].style.color="green";
+  cuadrados[e3].style.color="green";
   
   win.innerHTML=("¡Gana el jugador de las "+mark+"'s !");
   turno=3;
@@ -296,35 +296,35 @@ function paint(e1,e2,e3){
 
 function init(){
   turno=1;
-  var html="<div class='square s1'></div>";
-  html+="<div class='square s2'></div>";
-  html+="<div class='square s3'></div>";
-  html+="<div class='square s4'></div>";
-  html+="<div class='square s5'></div>";
-  html+="<div class='square s6'></div>";
-  html+="<div class='square s7'></div>";
-  html+="<div class='square s8'></div>";
-  html+="<div class='square s9'></div>";
+  var html="<div class='cuadrado s1'></div>";
+  html+="<div class='cuadrado s2'></div>";
+  html+="<div class='cuadrado s3'></div>";
+  html+="<div class='cuadrado s4'></div>";
+  html+="<div class='cuadrado s5'></div>";
+  html+="<div class='cuadrado s6'></div>";
+  html+="<div class='cuadrado s7'></div>";
+  html+="<div class='cuadrado s8'></div>";
+  html+="<div class='cuadrado s9'></div>";
   canvas.innerHTML=html;
 
-  squares= document.getElementsByClassName("square");
+  cuadrados= document.getElementsByClassName("cuadrado");
 
 
-  squares[0].addEventListener("click",function(){ rev(0);} );
-  squares[1].addEventListener("click",function(){ rev(1);} );
-  squares[2].addEventListener("click",function(){ rev(2);} );
-  squares[3].addEventListener("click",function(){ rev(3);} );
-  squares[4].addEventListener("click",function(){ rev(4);} );
-  squares[5].addEventListener("click",function(){ rev(5);} );
-  squares[6].addEventListener("click",function(){ rev(6);} );
-  squares[7].addEventListener("click",function(){ rev(7);} );
-  squares[8].addEventListener("click",function(){ rev(8);} );
+  cuadrados[0].addEventListener("click",function(){ rev(0);} );
+  cuadrados[1].addEventListener("click",function(){ rev(1);} );
+  cuadrados[2].addEventListener("click",function(){ rev(2);} );
+  cuadrados[3].addEventListener("click",function(){ rev(3);} );
+  cuadrados[4].addEventListener("click",function(){ rev(4);} );
+  cuadrados[5].addEventListener("click",function(){ rev(5);} );
+  cuadrados[6].addEventListener("click",function(){ rev(6);} );
+  cuadrados[7].addEventListener("click",function(){ rev(7);} );
+  cuadrados[8].addEventListener("click",function(){ rev(8);} );
 
 
-  for (var i = squares.length - 1; i >= 0; i--) {
+  for (var i = cuadrados.length - 1; i >= 0; i--) {
     board[i]="";
-    squares[i].innerHTML="";
-    squares[i].removeAttribute("style");
+    cuadrados[i].innerHTML="";
+    cuadrados[i].removeAttribute("style");
   }
   
   bt.style.visibility="hidden";
