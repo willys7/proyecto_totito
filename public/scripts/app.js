@@ -2,7 +2,7 @@ var turno=1;
 
 var canvas=document.getElementById("totito");
 var bt=document.getElementsByClassName("btn");
-var win=document.getElementsByClassName("ganador");
+var ganador=document.getElementsByClassName("ganador");
 var cuadrados= document.getElementsByClassName("cuadrado");
 var tab=["","","","","","","","",""];
 var xo="";
@@ -113,10 +113,10 @@ function verificar(){
     }
   }
   if (i === -1) {
-    win.innerHTML=("Hay un empate");
+    ganador.innerHTML=("Hay un empate");
     turno=3;
     bt.style.visibility="visible";
-    win.style.visibility="visible";
+    ganador.style.visibility="visible";
   }
 }
 
@@ -125,9 +125,9 @@ function ganador(e1,e2,e3){
   cuadrados[e2].style.color="orange";
   cuadrados[e3].style.color="orange";
   
-  win.innerHTML=("Felicidades jugador de las "+xo+" gano!");
+  ganador.innerHTML=("Felicidades jugador de las "+xo+" gano!");
   turno=3;
-  win.style.visibility="visible";
+  gandor.style.visibility="visible";
   bt.addEventListener("click",init());
 }
 
@@ -150,7 +150,7 @@ function init(){
 
   cuadrados= document.getElementsByClassName("cuadrado");
   bt=document.getElementsByClassName("btn");
-  win=document.getElementsByClassName("ganador");
+  ganador=document.getElementsByClassName("ganador");
 
   cuadrados[0].addEventListener("click",function(){ render(0);} );
   cuadrados[1].addEventListener("click",function(){ render(1);} );
@@ -171,7 +171,7 @@ function init(){
   }
   
   bt.style.visibility="hidden";
-  win.style.visibility="hidden";
+  ganador.style.visibility="hidden";
 }
 init();var turno=1;
 
