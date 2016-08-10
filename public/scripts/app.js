@@ -4,107 +4,111 @@ var canvas=document.getElementById("totito");
 var bt=document.getElementById("btn");
 var win=document.getElementById("ganador");
 var cuadrados= document.getElementsByClassName("cuadrado");
-var board=["","","","","","","","",""];
-var mark="";
+var tab=["","","","","","","","",""];
+var xo="";
 var cl;
-function rev(element){
+
+function render(element){
   
   if (cuadrados[element].innerHTML=== "") {
       if (turno===3) {
         return 1;
       }
       if (turno===1) {
-        mark="X";
+        xo="O";
         turno=2;
       }else if (turno===2) {
-        mark="O";
+        xo="X";
         turno=1;
       }
       
-    cuadrados[element].innerHTML=mark;
-    board[element]=mark;
-    render();
+    cuadrados[element].innerHTML=xo;
+    tab[element]=xo;
+    verificar();
   }
   
 }
 
 
+function verificar(){
 
-bt.addEventListener("click",init);
-
-
-function render(){
-
-
-  if (board[0] !== "") {
-    //revisar 1ra fila, diagonal, 1ra columna
-    if (board[1]===board[0]) {
-      if (board[2]===board[0]) {
-        paint(0,1,2);
-        return true;
-      }
-    }
-    if (board[4]===board[0]) {
-      if (board[8]===board[0]) {
-        paint(0,4,8);
-        return true;
-      }
-    }
-    if (board[3]===board[0]) {
-      if (board[6]===board[0]) {
-        paint(0,3,6);
+//2da columna
+  if (tab[1] !== "") {
+    if (tab[4]===tab[1]) {
+      if (tab[7]===tab[1]) {
+        ganador(1,4,7);
         return true;
       }
     }
 
   }
-//revisar 2da columna
-  if (board[1] !== "") {
-    if (board[4]===board[1]) {
-      if (board[7]===board[1]) {
-        paint(1,4,7);
+//diagonal derecha a izquierda 
+  if (tab[2] !== "") {
+    if (tab[4]===tab[2]) {
+      if (tab[6]===tab[2]) {
+        ganador(2,4,6);
         return true;
       }
     }
 
-  }
-//revisar diagonal invertida y 3ra columna
-  if (board[2] !== "") {
-    if (board[4]===board[2]) {
-      if (board[6]===board[2]) {
-        paint(2,4,6);
-        return true;
-      }
-    }
-    if (board[5]===board[2]) {
-      if (board[8]===board[2]) {
-        paint(2,5,8);
+    //col - 3
+    if (tab[5]===tab[2]) {
+      if (tab[8]===tab[2]) {
+        ganador(2,5,8);
         return true;
       }
     }
     
   }
-//revisar 2da fila
-  if (board[3] !== "") {
-    if (board[4]===board[3]) {
-      if (board[5]===board[3]) {
-        paint(3,4,5);
+
+  //fila - 2
+  if (tab[3] !== "") {
+    if (tab[4]===tab[3]) {
+      if (tab[5]===tab[3]) {
+        ganador(3,4,5);
         return true;
       }
     }
   }
-//revisar 3ra fila
-  if (board[6] !== "") {
-    if (board[7]===board[6]) {
-      if (board[8]===board[6]) {
-        paint(6,7,8);
+
+  if (tab[0] !== "") {
+    //fila - 1
+    if (tab[1]===tab[0]) {
+      if (tab[2]===tab[0]) {
+        ganador(0,1,2);
+        return true;
+      }
+    }
+    //Diagonal izquierda a derecha
+    if (tab[4]===tab[0]) {
+      if (tab[8]===tab[0]) {
+        ganador(0,4,8);
+        return true;
+      }
+    }
+
+    //col - 1
+    if (tab[3]===tab[0]) {
+      if (tab[6]===tab[0]) {
+        ganador(0,3,6);
+        return true;
+      }
+    }
+
+  }
+
+//fila - 3
+  if (tab[6] !== "") {
+    if (tab[7]===tab[6]) {
+      if (tab[8]===tab[6]) {
+        ganador(6,7,8);
         return true;
       }
     }
   }
-//revisar si hay empate
+//empate
   for (var i = cuadrados.length - 1; i >= 0; i--) {
-    if (board[i]==="") {
+    if (tab[i]==="") {
       break;
     }
   }
@@ -116,12 +120,12 @@ function render(){
   }
 }
 
-function paint(e1,e2,e3){
-  cuadrados[e1].style.color="green";
-  cuadrados[e2].style.color="green";
-  cuadrados[e3].style.color="green";
+function ganador(e1,e2,e3){
+  cuadrados[e1].style.color="orange";
+  cuadrados[e2].style.color="orange";
+  cuadrados[e3].style.color="orange";
   
-  win.innerHTML=("¡Gana el jugador de las "+mark+"'s !");
+  win.innerHTML=("Felicidades jugador de las "+xo+" gano!");
   turno=3;
   bt.style.visibility="visible";
   win.style.visibility="visible";
@@ -143,19 +147,20 @@ function init(){
   cuadrados= document.getElementsByClassName("cuadrado");
 
 
-  cuadrados[0].addEventListener("click",function(){ rev(0);} );
-  cuadrados[1].addEventListener("click",function(){ rev(1);} );
-  cuadrados[2].addEventListener("click",function(){ rev(2);} );
-  cuadrados[3].addEventListener("click",function(){ rev(3);} );
-  cuadrados[4].addEventListener("click",function(){ rev(4);} );
-  cuadrados[5].addEventListener("click",function(){ rev(5);} );
-  cuadrados[6].addEventListener("click",function(){ rev(6);} );
-  cuadrados[7].addEventListener("click",function(){ rev(7);} );
-  cuadrados[8].addEventListener("click",function(){ rev(8);} );
+  cuadrados[0].addEventListener("click",function(){ render(0);} );
+  cuadrados[1].addEventListener("click",function(){ render(1);} );
+  cuadrados[2].addEventListener("click",function(){ render(2);} );
+  cuadrados[3].addEventListener("click",function(){ render(3);} );
+  cuadrados[4].addEventListener("click",function(){ render(4);} );
+  cuadrados[5].addEventListener("click",function(){ render(5);} );
+  cuadrados[6].addEventListener("click",function(){ render(6);} );
+  cuadrados[7].addEventListener("click",function(){ render(7);} );
+  cuadrados[8].addEventListener("click",function(){ render(8);} );
+  bt.addEventListener("click",init);
 
 
   for (var i = cuadrados.length - 1; i >= 0; i--) {
-    board[i]="";
+    tab[i]="";
     cuadrados[i].innerHTML="";
     cuadrados[i].removeAttribute("style");
   }
@@ -165,34 +170,3 @@ function init(){
 }
 init();var turno=1;
 
-var canvas=document.getElementById("totito");
-var bt=document.getElementById("btn");
-var win=document.getElementById("ganador");
-var cuadrados= document.getElementsByClassName("cuadrado");
-var board=["","","","","","","","",""];
-var mark="";
-var cl;
-function rev(element){
-  
-  if (cuadrados[element].innerHTML=== "") {
-      if (turno===3) {
-        return 1;
-      }
-      if (turno===1) {
-        mark="X";
-        turno=2;
-      }else if (turno===2) {
-        mark="O";
-        turno=1;
-      }
-      
-    cuadrados[element].innerHTML=mark;
-    board[element]=mark;
-    render();
-  }
-  
-}
-
-bt.addEventListener("click",init);
-
-init();
