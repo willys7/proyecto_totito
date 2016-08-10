@@ -1,8 +1,8 @@
 var turno=1;
 
 var canvas=document.getElementById("totito");
-var bt=document.getElementById("btn");
-var win=document.getElementById("ganador");
+var bt=document.getElementsByClassName("btn");
+var win=document.getElementsByClassName("ganador");
 var cuadrados= document.getElementsByClassName("cuadrado");
 var tab=["","","","","","","","",""];
 var xo="";
@@ -127,8 +127,8 @@ function ganador(e1,e2,e3){
   
   win.innerHTML=("Felicidades jugador de las "+xo+" gano!");
   turno=3;
-  bt.style.visibility="visible";
   win.style.visibility="visible";
+  bt.addEventListener("click",init());
 }
 
 function init(){
@@ -142,10 +142,15 @@ function init(){
   html+="<div class='cuadrado s7'></div>";
   html+="<div class='cuadrado s8'></div>";
   html+="<div class='cuadrado s9'></div>";
+  html+="<div id='ganador'></div>";
+  html+="<button class='btn'>Jugar otra vez</button>";
+  
+
   canvas.innerHTML=html;
 
   cuadrados= document.getElementsByClassName("cuadrado");
-
+  bt=document.getElementsByClassName("btn");
+  win=document.getElementsByClassName("ganador");
 
   cuadrados[0].addEventListener("click",function(){ render(0);} );
   cuadrados[1].addEventListener("click",function(){ render(1);} );
@@ -156,7 +161,7 @@ function init(){
   cuadrados[6].addEventListener("click",function(){ render(6);} );
   cuadrados[7].addEventListener("click",function(){ render(7);} );
   cuadrados[8].addEventListener("click",function(){ render(8);} );
-  bt.addEventListener("click",init);
+  bt[0].addEventListener("click",init());
 
 
   for (var i = cuadrados.length - 1; i >= 0; i--) {
